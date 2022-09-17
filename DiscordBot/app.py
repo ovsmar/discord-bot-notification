@@ -39,22 +39,16 @@ async def on_ready():
      
     scheduler.start()
 
-# @bot.command()
-# @commands.has_permissions(administrator=True)
-# async def close(ctx):
-#     response_close = f"Tu m'as tué... 😡 \n Désactivation du bot dans 5 secondes..."
-#     msgC= await ctx.send(response_close)
-#     await asyncio.sleep(5)
-#     await ctx.message.delete()
-#     await msgC.delete() 
-#     await bot.close()
-
 @bot.command()
-@commands.is_owner()
-async def remoteshutdown(ctx):
-    await ctx.send("Shutting down")
-    # Shuts down the bot
-    await bot.logout()
+@commands.has_permissions(administrator=True)
+async def close(ctx):
+    response_close = f"Tu m'as tué... 😡 \n Désactivation du bot dans 5 secondes..."
+    msgC= await ctx.send(response_close)
+    await asyncio.sleep(5)
+    await ctx.message.delete()
+    await msgC.delete() 
+    await bot.close()
+
      
 @bot.command()
 @commands.has_permissions(administrator=True)
