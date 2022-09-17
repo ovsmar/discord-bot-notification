@@ -58,6 +58,7 @@ async def restart(ctx):
   await asyncio.sleep(5)
   await ctx.message.delete() 
   await msgR.delete()
+  os.system("sh start.sh")
   os.system("clear")
   os.execv(sys.executable, ['python'] + sys.argv)
    
