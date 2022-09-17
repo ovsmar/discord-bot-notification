@@ -5,6 +5,7 @@ from apscheduler.triggers.cron import CronTrigger
 import sys
 import os
 import asyncio
+import subprocess
 
 intents = discord.Intents.default() 
 intents.message_content = True
@@ -59,6 +60,7 @@ async def restart(ctx):
   await ctx.message.delete() 
   await msgR.delete()
   os.system("sh start.sh")
+  subprocess.call(["heroku restart -a discord-bot-notification"])
   os.system("clear")
   os.execv(sys.executable, ['python'] + sys.argv)
    
