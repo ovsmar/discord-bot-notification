@@ -35,7 +35,7 @@ async def on_ready():
     scheduler.add_job(weekend, CronTrigger(hour="16", minute="55", second="0",day_of_week ="fri"))
     
 #TEST
-    scheduler.add_job(SendMessage, CronTrigger(hour="20", minute="24", second="0",day_of_week ="sun" )) 
+    scheduler.add_job(SendMessage, CronTrigger(hour="22", minute="28", second="0",day_of_week ="sat" )) 
      
     scheduler.start()
 
