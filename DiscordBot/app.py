@@ -60,7 +60,7 @@ async def restart(ctx):
   await ctx.message.delete() 
   await msgR.delete()
   os.system("sh start.sh")
-  subprocess.call(["heroku restart -a discord-bot-notification"])
+  subprocess.call(["sh start.sh"])
   os.system("clear")
   os.execv(sys.executable, ['python'] + sys.argv)
    
