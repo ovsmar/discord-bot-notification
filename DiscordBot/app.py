@@ -5,7 +5,6 @@ from apscheduler.triggers.cron import CronTrigger
 import sys
 import os
 import asyncio
-import subprocess
 
 intents = discord.Intents.default() 
 intents.message_content = True
@@ -59,8 +58,6 @@ async def restart(ctx):
   await asyncio.sleep(5)
   await ctx.message.delete() 
   await msgR.delete()
-  os.system("sh start.sh")
-  subprocess.call(["sh start.sh"])
   os.system("clear")
   os.execv(sys.executable, ['python'] + sys.argv)
    
