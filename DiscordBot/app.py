@@ -28,6 +28,14 @@ async def weekend():
     await asyncio.sleep(10800)
     await M2.delete()
     
+async def Bonappetit():
+    message3 = str("Bon appétit !")
+    await bot.wait_until_ready()
+    channelID = bot.get_channel(905038240141156355)
+    M3 = await channelID.send(message3)
+    await asyncio.sleep(600)
+    await M3.delete()
+    
 
 @bot.event
 async def on_ready():
@@ -36,6 +44,7 @@ async def on_ready():
 
     scheduler.add_job(SendMessage, CronTrigger(hour="10, 14", minute="0", second="0",day_of_week ="mon,tue,wed,thu,fri"))
     scheduler.add_job(weekend, CronTrigger(hour="16", minute="55", second="0",day_of_week ="fri"))
+    scheduler.add_job(Bonappetit, CronTrigger(hour="12", minute="28", second="0",day_of_week ="mon,tue,wed,thu,fri" )) 
     
 
     
