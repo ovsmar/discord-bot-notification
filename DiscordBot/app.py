@@ -11,19 +11,22 @@ intents.message_content = True
 
 bot = commands.Bot(command_prefix='!', intents=intents) 
 
-message = str("⚠️ ATTENTION ⚠️ \n Pensez à signer!")
-message2 = str("Bon week-end !") 
-
 
 async def SendMessage():
+    message = str("⚠️ ATTENTION ⚠️ \n Pensez à signer!")
     await bot.wait_until_ready()
     channelID = bot.get_channel(905038240141156355)
-    await channelID.send(message)
+    M1 = await channelID.send(message)
+    await asyncio.sleep(28800)
+    await M1.delete()
     
 async def weekend():
+    message2 = str("Bon week-end !")
     await bot.wait_until_ready()
     channelID = bot.get_channel(905038240141156355)
-    await channelID.send(message2)
+    M2 = await channelID.send(message2)
+    await asyncio.sleep(10800)
+    await M2.delete()
     
 
 @bot.event
