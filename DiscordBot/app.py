@@ -17,12 +17,12 @@ message2 = str("Bon week-end !")
 
 async def SendMessage():
     await bot.wait_until_ready()
-    channelID = bot.get_channel(1020395232908546072)
+    channelID = bot.get_channel(905038240141156355)
     await channelID.send(message)
     
 async def weekend():
     await bot.wait_until_ready()
-    channelID = bot.get_channel(1020395232908546072)
+    channelID = bot.get_channel(905038240141156355)
     await channelID.send(message2)
     
 
