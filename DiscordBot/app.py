@@ -31,10 +31,10 @@ async def on_ready():
     print("Ready")
     scheduler = AsyncIOScheduler()
 
-    scheduler.add_job(SendMessage, CronTrigger(hour="10, 15", minute="0", second="0",day_of_week ="mon,tue,wed,thu,fri"))
+    scheduler.add_job(SendMessage, CronTrigger(hour="10, 14", minute="0", second="0",day_of_week ="mon,tue,wed,thu,fri"))
     scheduler.add_job(weekend, CronTrigger(hour="16", minute="55", second="0",day_of_week ="fri"))
     
-#TEST
+
     
      
     scheduler.start()
