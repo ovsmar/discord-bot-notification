@@ -17,7 +17,7 @@ async def SendMessage():
     await bot.wait_until_ready()
     channelID = bot.get_channel(905038240141156355)
     M1 = await channelID.send(message)
-    await asyncio.sleep(28800)
+    await asyncio.sleep(13500)
     await M1.delete()
     
 async def weekend():
