@@ -86,7 +86,46 @@ async def about(ctx):
     await ctx.message.delete() 
     await ctx.send("Je suis un bot intelligent créé par une personne stupide..." ,file=discord.File('c00724125597bf8112ba89c72e9440c8.jpg'))
 
+@bot.command()
+async def vote(ctx,*,message):
+    embed = discord.Embed(title =f"{message}", description = "Voici une liste de emoji au choix:\n\n1.✅ YES\n2.❌ NO\n", colour = discord.Colour.from_rgb(0, 204, 102))
+    await asyncio.sleep(0)
+    await ctx.message.delete() 
+    msg = await ctx.send(embed=embed)
+    await msg.add_reaction('\u2705')
+    await msg.add_reaction('\u274C')
+    await asyncio.sleep(45)
+    await ctx.send( "Attention il reste 10 sec")
+    await asyncio.sleep(10)
+    await ctx.send( "PLUS QUE 5 sec !!!!!!!!!!!")
+    await asyncio.sleep(5)
+
+    msg = await msg.channel.fetch_message(msg.id)
+
+    for reaction in msg.reactions:
+        print(reaction, reaction.count)
+
+        embed = discord.Embed(title =f"Le vote est terminé!", description ='GAGNANTE!', colour = discord.Colour.from_rgb(0, 204, 102))
+        embed2 = discord.Embed(title =f"Le vote est terminé!", description ='Égale', colour = discord.Colour.from_rgb(0, 204, 102))
     
+    if(msg.reactions[0].count > msg.reactions[1].count):
+        await ctx.send(embed=embed)
+        await ctx.send(msg.reactions[0])
+        print("yes")
+        
+    elif(msg.reactions[0].count < msg.reactions[1].count):
+        await ctx.send(embed=embed)
+        await ctx.send(msg.reactions[1])
+        print("non")
+        
+    elif(msg.reactions[0].count == msg.reactions[1].count):
+        await ctx.send(embed=embed2)
+        await ctx.send(msg.reactions[1]) and await ctx.send(msg.reactions[0])
+        print("égale")
+        
+@bot.command()        
+async def meme(ctx):
+    await ctx.send(embed=await pyrandmeme())     
    
 
 bot.run(os.environ["DISCORD_TOKEN"])
