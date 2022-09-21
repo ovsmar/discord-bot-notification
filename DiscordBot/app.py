@@ -125,6 +125,8 @@ async def vote(ctx,*,message):
         
 @bot.command()        
 async def meme(ctx):
+    await asyncio.sleep(0)
+    await ctx.message.delete()
     await ctx.send(embed=await pyrandmeme())     
    
 
