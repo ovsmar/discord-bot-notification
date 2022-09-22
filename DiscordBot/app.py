@@ -5,7 +5,6 @@ from apscheduler.triggers.cron import CronTrigger
 import sys
 import os
 import asyncio
-from pyrandmeme import *
 
 intents = discord.Intents.default() 
 intents.message_content = True
@@ -123,11 +122,7 @@ async def vote(ctx,*,message):
         await ctx.send(msg.reactions[1]) and await ctx.send(msg.reactions[0])
         print("égale")
         
-@bot.command()        
-async def meme(ctx):
-    await asyncio.sleep(0)
-    await ctx.message.delete()
-    await ctx.send(embed=await pyrandmeme())     
+     
    
 
 bot.run(os.environ["DISCORD_TOKEN"])
