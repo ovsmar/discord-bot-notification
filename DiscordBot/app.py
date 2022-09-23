@@ -131,8 +131,9 @@ async def meme(ctx,*,message):
     await asyncio.sleep(0)
     await MessageOfMeme.delete()
     
-    username = 'ovsmar'
-    password = '7?@VYE_9T@V2&XFSO]N3=|#U^&)1J0KV:_HSIX)`]TG&WPE1SMISB1N_P^' 
+    username = (os.environ["USER"])
+    password = (os.environ["PASSWORD"])
+    
     #Fetch the available memes
     data = requests.get('https://api.imgflip.com/get_memes').json()['data']['memes']
     images = [{'name':image['name'],'url':image['url'],'id':image['id']} for image in data]
