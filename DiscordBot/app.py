@@ -5,6 +5,8 @@ from apscheduler.triggers.cron import CronTrigger
 import sys
 import os
 import asyncio
+from random import choice
+import requests
 
 intents = discord.Intents.default() 
 intents.message_content = True
