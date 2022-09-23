@@ -121,6 +121,35 @@ async def vote(ctx,*,message):
         await ctx.send(embed=embed2)
         await ctx.send(msg.reactions[1]) and await ctx.send(msg.reactions[0])
         print("égale")
+   
+@bot.command()
+async def meme(ctx,*,message):
+    embedOfMeme = discord.Embed(title =f"{message}")        
+    await asyncio.sleep(0)
+    await ctx.message.delete()
+    MessageOfMeme = await ctx.send(embed=embedOfMeme)
+    await asyncio.sleep(0)
+    await MessageOfMeme.delete()
+    
+    username = os.environ["USER"]
+    password = os.environ["PASSWORD"] 
+    #Fetch the available memes
+    data = requests.get('https://api.imgflip.com/get_memes').json()['data']['memes']
+    images = [{'name':image['name'],'url':image['url'],'id':image['id']} for image in data]
+   
+    id = choice(range(100))
+    text0 = {message}
+
+    #Fetch the generated meme
+    URL = 'https://api.imgflip.com/caption_image'
+    params = {
+        'username':username,
+        'password':password,
+        'template_id':images[id-1]['id'],
+        'text0':text0,
+    }
+    response = requests.request('POST',URL,params=params).json() 
+    await ctx.send(response['data']['url']) 
         
      
    
